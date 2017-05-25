@@ -1,0 +1,53 @@
+﻿@model SunshineCleaning.ViewModels.RandomClientViewModel
+
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clients</h2>
+
+@if (Model.Clients.Count == 0)
+{
+    <p>No one has purchased your cleaning services.</p>
+}
+else
+{
+    <table id="customers" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Client Namer</th>
+                @*<th>Membership Type</th>
+                <th>Delete</th*@>
+            </tr>
+        </thead>
+        <tbody>
+
+           @foreach (var client in Model.Clients)
+           {
+                    <tr>
+                        <td>@Html.ActionLink(client.Name, "Edit", "Clients", new {id = client.Id}, null)</td>
+                        @*<td>@customer.MembershipType.Name</td>
+                        <td>
+                            <button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button>
+                        </td>*@
+                    </tr>
+                }
+        </tbody>
+    </table>
+    
+    
+    @*<ul>
+        @foreach (var client in Model.Clients)
+        {
+            <li>@client.Name</li>
+        }
+
+
+    </ul>*@
+
+}
+
+
+
+
